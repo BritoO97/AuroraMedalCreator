@@ -859,19 +859,23 @@ public class MainWindow {
 	
 	private boolean validateImageFileName(String fileName)
 	{	
+				
 		if (fileName.trim().length() < 1)
 			return false;
+				
+		String[] split = fileName.trim().split("\\.");
 		
-		String[] split = fileName.trim().split(".");
 		if (split.length < 2)
 			return false;
 		
 		String fileType = split[1];
 		
 		String[] validTypes = Config.validImageTypes;
+		
 		for (String type : validTypes)
-		{
-			return type.equalsIgnoreCase(fileType);
+		{			
+			if (type.equalsIgnoreCase(fileType))
+				return true;
 		}
 		return false;
 	}
@@ -883,7 +887,7 @@ public class MainWindow {
 			return null;
 		}
 		
-		String[] split = fileName.trim().split(".");
+		String[] split = fileName.trim().split("\\.");
 		if (split.length < 2)
 			return fileName + ".csv";
 		
