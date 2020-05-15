@@ -1,4 +1,4 @@
-# AuroraMedalCreator
+# Aurora Medal Creator
 
 3rd party tool for the C# Version of [Aurora4x](http://aurora2.pentarch.org/).
 It allows the creation of medal sets that can be imported into Aurora
