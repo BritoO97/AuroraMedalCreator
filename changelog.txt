@@ -1,0 +1,8 @@
+Version 0.2:
+	- Ensured that it works with Aurora 1.10.0
+	- Added the last 8 missing conditions
+	- Fixed a UI bug. You could add conditions when no medal was selected
+	- Fixed a bug when loading existing medal sets. The Icon path was missing a "\"
+
+Version 0.1:
+	Initial Release

@@ -757,24 +757,26 @@ public class MainWindow {
 	
 	private void addMedalCondition()
 	{
-		String condition = (String)conditionSelector.getSelectedItem();
-		int conditionID = conditionArray.indexOf(condition) + 1;
-		
-		Object[] dataRow = {new Integer(conditionID), condition};
-		DefaultTableModel model = (DefaultTableModel) conditionTable.getModel();
-		int numRows = model.getRowCount();
-		for (int i = 0; i< numRows; i++)
-		{
-			String rowValue = (String)conditionTable.getValueAt(i, 1);
-			if (rowValue.equals(condition))
+		if (currentMedal != null) {
+			String condition = (String)conditionSelector.getSelectedItem();
+			int conditionID = conditionArray.indexOf(condition) + 1;
+			
+			Object[] dataRow = {new Integer(conditionID), condition};
+			DefaultTableModel model = (DefaultTableModel) conditionTable.getModel();
+			int numRows = model.getRowCount();
+			for (int i = 0; i< numRows; i++)
 			{
-				return;
+				String rowValue = (String)conditionTable.getValueAt(i, 1);
+				if (rowValue.equals(condition))
+				{
+					return;
+				}
 			}
+			model.addRow(dataRow);
+			conditionTable.setModel(model);
+			
+			currentMedal.addCondition(conditionID);
 		}
-		model.addRow(dataRow);
-		conditionTable.setModel(model);
-		
-		currentMedal.addCondition(conditionID);
 		
 		
 	}
@@ -853,7 +855,8 @@ public class MainWindow {
 	{
 		for (Medal m : medalArray)
 		{
-			updateMedalTable(m, new ImageIcon(Config.defaultImageDirectory + m.getImgName()));
+			System.out.println("IMG: " + (Config.defaultImageDirectory + m.getImgName()));
+			updateMedalTable(m, new ImageIcon(Config.defaultImageDirectory + "\\" + m.getImgName()));
 		}
 	}
 	
